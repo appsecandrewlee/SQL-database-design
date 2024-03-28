@@ -1,0 +1,22 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="Relation4" directorySegmentName="seg_0" id="1CF95B0B-1E78-9AFE-EDD5-D6BA23781423">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 07:16:33 UTC</createdTime>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<sourcePk>FA68ED74-AF10-5782-095E-0E16A5704C07</sourcePk>
+<targetPk>0E680BAE-8E22-18A5-C6B7-1CABCBD84EBA</targetPk>
+<identifying>false</identifying>
+<nameOnSource>categorises</nameOnSource>
+<nameOnTarget> </nameOnTarget>
+<optionalSource>false</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>*</sourceCardinality>
+<sourceEntity>FEA5EC48-910E-47C5-036F-67968DF0FFC5</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>B145D4FB-E3B0-B3F9-932C-9F81D7190B97</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

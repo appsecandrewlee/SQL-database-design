@@ -1,0 +1,110 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="FD366121-B8D6-99CD-049D-8CF412999CE7" name="CUSTOMER">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 06:15:07 UTC</createdTime>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="cust_no" id="A793D33E-31FF-B03C-EC2B-67FC89D0BFE3">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 06:15:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[Customer Number]]></commentInRDBMS>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_name" id="46FE2F46-56D2-6464-CA9A-1D1DE90ACDDC">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 06:15:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[Customer Name]]></commentInRDBMS>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_address" id="1EF59652-5FC8-DC38-F460-769C03449992">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 06:15:47 UTC</createdTime>
+<commentInRDBMS><![CDATA[Customer Address]]></commentInRDBMS>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_phone" id="9C000395-6E64-51AB-B646-13E3A107407C">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 06:15:47 UTC</createdTime>
+<commentInRDBMS><![CDATA[Customer Phone]]></commentInRDBMS>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>10</dataTypeSize>
+<ownDataTypeParameters>10,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cust_level" id="517FD416-40FD-5CEC-1190-3CC2052A060F">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 07:03:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[customer level ]]></commentInRDBMS>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<constraintName>chk_custlevel</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<listOfValues>
+<valueDef value="B" description="Bronze"/>
+<valueDef value="G" description="Gold"/>
+<valueDef value="S" description="Silver"/>
+</listOfValues>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="CDFC553A-B6F5-3314-2EAC-D86922551C80" name="CUSTOMER PK">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 06:18:04 UTC</createdTime>
+<ownerDesignName>cust_orders</ownerDesignName>
+<engineerTo>
+<item key="563D52A1-8CE6-F353-6963-E2EE5808C4BD" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>A793D33E-31FF-B03C-EC2B-67FC89D0BFE3</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,78 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0F645FCD-6CD1-7E37-8183-9AF487ECA512" name="ORDERS">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 09:16:31 UTC</createdTime>
+<generatorID>FE355E2A-C3DD-F40B-0C78-CE851628FAC6</generatorID>
+<ownerDesignName>cust_orders</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="order_date" id="54BB106A-7BD3-C13C-0A14-3E13E709F0FC">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 09:16:31 UTC</createdTime>
+<generatorID>EBB4E378-2BA9-2649-5578-38D725EE8A62</generatorID>
+<ownerDesignName>cust_orders</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="order_no" id="AFA22AA3-0239-A947-F46F-990F5EBE15F8">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 09:16:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[Order Number]]></commentInRDBMS>
+<generatorID>4D19A057-262F-9DB1-005C-A0C31D39A106</generatorID>
+<ownerDesignName>cust_orders</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,7,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="cust_no" id="EB430244-DE88-06BD-49F5-C787D50E72EA">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 09:16:31 UTC</createdTime>
+<commentInRDBMS><![CDATA[Customer Number]]></commentInRDBMS>
+<generatorID>B98B8C32-F361-0E47-9C89-CAAD5E964B57</generatorID>
+<ownerDesignName>cust_orders</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1707A6A9-1368-86BF-3D59-98CBBD675F7B" referredColumn="46C04CA9-CA64-454E-294B-F5C93C4AA24E"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="85669BAD-8C9A-AFBE-F375-F0B287E0DCEC" name="ORDERS_PK">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 09:16:31 UTC</createdTime>
+<generatorID>B8B7ADBF-39D0-46B2-95EB-BE3A71B7EAEF</generatorID>
+<ownerDesignName>cust_orders</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="AFA22AA3-0239-A947-F46F-990F5EBE15F8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="4CABAE08-B0D3-A8B7-278D-1F665505974F" name="customer_orders">
+<createdBy>vellichastrxism</createdBy>
+<createdTime>2022-08-31 09:16:31 UTC</createdTime>
+<generatorID>38422460-6484-DA36-D2DE-4517CA61D6E2</generatorID>
+<ownerDesignName>cust_orders</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EB430244-DE88-06BD-49F5-C787D50E72EA"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,99 @@
+SQL> 
+SQL> --****PLEASE ENTER YOUR DETAILS BELOW****
+SQL> --proprental_task.sql
+SQL> 
+SQL> --Student ID: 30864941
+SQL> --Student Name: Andrew Lee
+SQL> --Unit Code: 2094 
+SQL> --Applied Class No: 07
+SQL> 
+SQL> 
+SQL> -- Task 1
+SQL> -- Create table MAINTENANCE
+SQL> CREATE TABLE MAINTENANCE (
+  2  
+  3  maint_id        NUMBER (7) NOT NULL,
+  4  maint_datetime  DATE       NOT NULL,
+  5  maint_desc      VARCHAR2(50) NOT NULL,
+  6  maint_cost      NUMBER (8, 2) NOT NULL,
+  7  maint_assigned  CHAR(1)
+  8  
+  9  );
+
+Table MAINTENANCE created.
+
+SQL> 
+SQL> COMMENT ON COLUMN MAINTENANCE.maint_id IS
+  2      'The maintenance ID';
+
+Comment created.
+
+SQL> COMMENT ON COLUMN MAINTENANCE.maint_datetime IS
+  2      'Maintenance date time';
+
+Comment created.
+
+SQL> COMMENT ON COLUMN MAINTENANCE.maint_desc IS
+  2      'Maintenance description';
+
+Comment created.
+
+SQL> COMMENT ON COLUMN MAINTENANCE.maint_cost IS
+  2      'Maintenance cost';
+
+Comment created.
+
+SQL> COMMENT ON COLUMN MAINTENANCE.maint_assigned IS
+  2      'Maintenance assigned';
+
+Comment created.
+
+SQL> 
+SQL> -- Task 2
+SQL> -- CREATE two sequences
+SQL> DROP SEQUENCE ownersequence;
+
+Sequence OWNERSEQUENCE dropped.
+
+SQL> 
+SQL> CREATE SEQUENCE ownersequence start with 1
+  2  increment by 1;
+
+Sequence OWNERSEQUENCE created.
+
+SQL> 
+SQL> 
+SQL> DROP SEQUENCE propertysequence;
+
+Sequence PROPERTYSEQUENCE dropped.
+
+SQL> 
+SQL> CREATE SEQUENCE propertysequence start with 1
+  2  increment by 1;
+
+Sequence PROPERTYSEQUENCE created.
+
+SQL> 
+SQL> 
+SQL> -- Task 3
+SQL> -- Insert the data
+SQL> INSERT INTO OWNER(owner_no,owner_givname,owner_famname,owner_address)
+  2  VALUES(1234,'Andrew','Lee','MonashLibrary');
+
+1 row inserted.
+
+SQL> 
+SQL> INSERT INTO PROPERTY
+  2  VALUES(999,'NorthMelbourne222Street7',10.05,(SELECT owner_no from OWNER where owner_givname = 'Andrew' and owner_famname ='Lee'));
+
+1 row inserted.
+
+SQL> 
+SQL> INSERT INTO MAINTENANCE(maint_id,maint_datetime,maint_desc,maint_cost)
+  2  VALUES(ownersequence.nextval,to_date('01-Jan-2003','dd-Mon-yyyy')
+  3  ,'GoodMaintenance',300);
+
+1 row inserted.
+
+SQL> 
+SQL> SPOOL OFF

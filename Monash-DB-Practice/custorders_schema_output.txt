@@ -1,0 +1,275 @@
+SQL> 
+SQL> 
+SQL> DROP TABLE customer CASCADE CONSTRAINTS;
+
+Table CUSTOMER dropped.
+
+SQL> 
+SQL> DROP TABLE orderline CASCADE CONSTRAINTS;
+
+Table ORDERLINE dropped.
+
+SQL> 
+SQL> DROP TABLE orders CASCADE CONSTRAINTS;
+
+Table ORDERS dropped.
+
+SQL> 
+SQL> DROP TABLE prod_category CASCADE CONSTRAINTS;
+
+Table PROD_CATEGORY dropped.
+
+SQL> 
+SQL> DROP TABLE product CASCADE CONSTRAINTS;
+
+Table PRODUCT dropped.
+
+SQL> 
+SQL> -- predefined type, no DDL - MDSYS.SDO_GEOMETRY
+SQL> 
+SQL> -- predefined type, no DDL - XMLTYPE
+SQL> 
+SQL> CREATE TABLE customer (
+  2      cust_no      NUMBER(7) NOT NULL,
+  3      cust_name    VARCHAR2(50) NOT NULL,
+  4      cust_address VARCHAR2(50) NOT NULL,
+  5      cust_phone   CHAR(10),
+  6      cust_level   CHAR(1) NOT NULL
+  7  );
+
+Table CUSTOMER created.
+
+SQL> 
+SQL> ALTER TABLE customer
+  2      ADD CONSTRAINT chk_custlevel CHECK ( cust_level IN ( 'B', 'G', 'S' ) );
+
+Table CUSTOMER altered.
+
+SQL> 
+SQL> COMMENT ON COLUMN customer.cust_no IS
+  2      'Customer Number';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN customer.cust_name IS
+  2      'Customer Name';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN customer.cust_address IS
+  2      'Customer Address';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN customer.cust_phone IS
+  2      'Customer Phone';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN customer.cust_level IS
+  2      'customer level ';
+
+Comment created.
+
+SQL> 
+SQL> ALTER TABLE customer ADD CONSTRAINT customer_pk PRIMARY KEY ( cust_no );
+
+Table CUSTOMER altered.
+
+SQL> 
+SQL> CREATE TABLE orderline (
+  2      ol_qtyordered NUMBER(7) NOT NULL,
+  3      ol_lineprice  NUMBER(7, 2) NOT NULL,
+  4      order_no      NUMBER(7) NOT NULL,
+  5      prod_no       NUMBER(7) NOT NULL
+  6  );
+
+Table ORDERLINE created.
+
+SQL> 
+SQL> COMMENT ON COLUMN orderline.ol_qtyordered IS
+  2      'order';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN orderline.ol_lineprice IS
+  2      'price';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN orderline.order_no IS
+  2      'Order Number';
+
+Comment created.
+
+SQL> 
+SQL> ALTER TABLE orderline ADD CONSTRAINT orderline_pk PRIMARY KEY ( order_no,
+  2                                                                  prod_no );
+
+Table ORDERLINE altered.
+
+SQL> 
+SQL> CREATE TABLE orders (
+  2      order_date DATE NOT NULL,
+  3      order_no   NUMBER(7) NOT NULL,
+  4      cust_no    NUMBER(7) NOT NULL
+  5  );
+
+Table ORDERS created.
+
+SQL> 
+SQL> COMMENT ON COLUMN orders.order_no IS
+  2      'Order Number';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN orders.cust_no IS
+  2      'Customer Number';
+
+Comment created.
+
+SQL> 
+SQL> ALTER TABLE orders ADD CONSTRAINT orders_pk PRIMARY KEY ( order_no );
+
+Table ORDERS altered.
+
+SQL> 
+SQL> CREATE TABLE prod_category (
+  2      pcat_name VARCHAR2(50) NOT NULL,
+  3      pcat_id   NUMBER(7) NOT NULL
+  4  );
+
+Table PROD_CATEGORY created.
+
+SQL> 
+SQL> COMMENT ON COLUMN prod_category.pcat_name IS
+  2      'Product category Name';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN prod_category.pcat_id IS
+  2      'Product category ID';
+
+Comment created.
+
+SQL> 
+SQL> ALTER TABLE prod_category ADD CONSTRAINT prod_category_pk PRIMARY KEY ( pcat_id );
+
+Table PROD_CATEGORY altered.
+
+SQL> 
+SQL> CREATE TABLE product (
+  2      prod_no          NUMBER(7) NOT NULL,
+  3      prod_desc        VARCHAR2(50) NOT NULL,
+  4      produc_unitprice NUMBER(7) NOT NULL,
+  5      pcat_id          NUMBER(7) NOT NULL
+  6  );
+
+Table PRODUCT created.
+
+SQL> 
+SQL> COMMENT ON COLUMN product.prod_desc IS
+  2      'Product Description';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN product.produc_unitprice IS
+  2      'Product unit price';
+
+Comment created.
+
+SQL> 
+SQL> COMMENT ON COLUMN product.pcat_id IS
+  2      'Product category ID';
+
+Comment created.
+
+SQL> 
+SQL> ALTER TABLE product ADD CONSTRAINT orderline_pkv1 PRIMARY KEY ( prod_no );
+
+Table PRODUCT altered.
+
+SQL> 
+SQL> ALTER TABLE orders
+  2      ADD CONSTRAINT customer_orders FOREIGN KEY ( cust_no )
+  3          REFERENCES customer ( cust_no );
+
+Table ORDERS altered.
+
+SQL> 
+SQL> ALTER TABLE orderline
+  2      ADD CONSTRAINT relation2 FOREIGN KEY ( order_no )
+  3          REFERENCES orders ( order_no );
+
+Table ORDERLINE altered.
+
+SQL> 
+SQL> ALTER TABLE orderline
+  2      ADD CONSTRAINT relation3 FOREIGN KEY ( prod_no )
+  3          REFERENCES product ( prod_no );
+
+Table ORDERLINE altered.
+
+SQL> 
+SQL> ALTER TABLE product
+  2      ADD CONSTRAINT relation4 FOREIGN KEY ( pcat_id )
+  3          REFERENCES prod_category ( pcat_id );
+
+Table PRODUCT altered.
+
+SQL> 
+SQL> 
+SQL> 
+SQL> -- Oracle SQL Developer Data Modeler Summary Report: 
+SQL> -- 
+SQL> -- CREATE TABLE                             5
+SQL> -- CREATE INDEX                             0
+SQL> -- ALTER TABLE                             10
+SQL> -- CREATE VIEW                              0
+SQL> -- ALTER VIEW                               0
+SQL> -- CREATE PACKAGE                           0
+SQL> -- CREATE PACKAGE BODY                      0
+SQL> -- CREATE PROCEDURE                         0
+SQL> -- CREATE FUNCTION                          0
+SQL> -- CREATE TRIGGER                           0
+SQL> -- ALTER TRIGGER                            0
+SQL> -- CREATE COLLECTION TYPE                   0
+SQL> -- CREATE STRUCTURED TYPE                   0
+SQL> -- CREATE STRUCTURED TYPE BODY              0
+SQL> -- CREATE CLUSTER                           0
+SQL> -- CREATE CONTEXT                           0
+SQL> -- CREATE DATABASE                          0
+SQL> -- CREATE DIMENSION                         0
+SQL> -- CREATE DIRECTORY                         0
+SQL> -- CREATE DISK GROUP                        0
+SQL> -- CREATE ROLE                              0
+SQL> -- CREATE ROLLBACK SEGMENT                  0
+SQL> -- CREATE SEQUENCE                          0
+SQL> -- CREATE MATERIALIZED VIEW                 0
+SQL> -- CREATE MATERIALIZED VIEW LOG             0
+SQL> -- CREATE SYNONYM                           0
+SQL> -- CREATE TABLESPACE                        0
+SQL> -- CREATE USER                              0
+SQL> -- 
+SQL> -- DROP TABLESPACE                          0
+SQL> -- DROP DATABASE                            0
+SQL> -- 
+SQL> -- REDACTION POLICY                         0
+SQL> -- TSDP POLICY                              0
+SQL> -- 
+SQL> -- ORDS DROP SCHEMA                         0
+SQL> -- ORDS ENABLE SCHEMA                       0
+SQL> -- ORDS ENABLE OBJECT                       0
+SQL> -- 
+SQL> -- ERRORS                                   0
+SQL> -- WARNINGS                                 0
+SQL> SPOOL off

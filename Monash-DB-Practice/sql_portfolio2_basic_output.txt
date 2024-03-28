@@ -1,0 +1,170 @@
+SQL> 
+SQL> --****PLEASE ENTER YOUR DETAILS BELOW****
+SQL> --sql_portfolio2_basic.sql
+SQL> 
+SQL> --Student ID: 30864941
+SQL> --Student Name: Andrew Lee
+SQL> --Unit Code: 2094
+SQL> --Applied Class No: 07
+SQL> 
+SQL> 
+SQL> /*1*/
+SQL> -- PLEASE PLACE REQUIRED SQL STATEMENT FOR THIS PART HERE
+SQL> -- ENSURE that your query is formatted and has a semicolon
+SQL> -- (;) at the end of this answer
+SQL> 
+SQL>         --property.no         --rent
+SQL> SELECT rent.property.prop_no,rent.rent_lease_start,rent.tenant_no,rent.rent_lease_period FROM
+  2  rent.property
+  3  join rent.rent ON rent.property.prop_no = rent.rent.prop_no
+  4  
+  5  WHERE
+  6  rent.rent_lease_start >= to_date('dd/mon/yy','01/JAN/20') AND rent.rent_lease_start < to_date('dd/mon/yy','01/JUN/20')
+  7  
+  8  ORDER BY 
+  9  rent.prop_no,
+ 10  rent.rent_lease_start;
+
+Error starting at line : 20 in command -
+SELECT rent.property.prop_no,rent.rent_lease_start,rent.tenant_no,rent.rent_lease_period FROM
+rent.property
+join rent.rent ON rent.property.prop_no = rent.rent.prop_no
+
+WHERE
+rent.rent_lease_start >= to_date('dd/mon/yy','01/JAN/20') AND rent.rent_lease_start < to_date('dd/mon/yy','01/JUN/20')
+
+ORDER BY 
+rent.prop_no,
+rent.rent_lease_start
+Error report -
+ORA-01821: date format not recognized
+
+SQL> 
+SQL> /*2*/
+SQL> -- PLEASE PLACE REQUIRED SQL STATEMENT FOR THIS PART HERE
+SQL> -- ENSURE that your query is formatted and has a semicolon
+SQL> -- (;) at the end of this answer
+SQL> 
+SQL> SELECT rent.damage.dam_datetime,rent.property.prop_no,rent.property.prop_address,rent.tenant.tenant_givname,rent.tenant.tenant_famname,rent.damage.dam_type,rent.damage.dam_cost,rent.damage.pay_no
+  2  
+  3  FROM rent.damage 
+  4  join rent.rent ON rent.damage.rent_agreement_no = rent.rent_agreement_no
+  5  join rent.property ON rent.rent.prop_no = rent.property.prop_no
+  6  join rent.tenant ON rent.rent.tenant_no = rent.tenant.tenant_no
+  7  
+  8  ORDER BY
+  9  rent.damage.dam_datetime DESC,
+ 10  rent.prop_no;
+
+DAM_DATET    PROP_NO PROP_ADDRESS                                                                     TENANT_GIVNAME       TENANT_FAMNAME       DAM_TYPE                                             DAM_COST     PAY_NO
+--------- ---------- -------------------------------------------------------------------------------- -------------------- -------------------- -------------------------------------------------- ---------- ----------
+01/SEP/22       9346 531 Sienna Run, Suite 991, 6792, Boscoburgh, Queensland                          Patricia             Stroband             Damaged carpeting                                         900           
+25/AUG/22       6123 26 Hackett Knoll, Apt. 615, 6856, South Annashire, Victoria                      Rich                 Suggate              Washing machine is out of order                           500        182
+17/MAY/22       1965 4633 Leannon Crescent, Suite 962, 1791, Lake Evaside, Tasmania                   Gustie               Hugueville           Broken door handle                                        150           
+15/SEP/21       4001 86 Lola Circuit, Apt. 822, 3342, Emmafurt, Australian Capital Territory          Irving               Legister             The walls are stained with plasticine                     330        134
+10/AUG/21       2117 9167 Heller Lane, Apt. 005, 3172, Alichester, Tasmania                           Melly                Jerger               Broken small window in the bathroom                       250        126
+11/JUN/20       1984 30 Cox Street, Suite 036, 1100, Fadelland, Tasmania                              Haily                Cuardall             TV in the bedroom is out of order                         425         36
+
+6 rows selected. 
+
+SQL> 
+SQL> SELECT rent.damage.pay_no,
+  2  CASE WHEN rent.damage.pay_no is NULL THEN 'No Payment Made' END AS damagelabel FROM rent.damage
+  3  join rent.rent ON rent.damage.rent_agreement_no = rent.rent_agreement_no
+  4  join rent.payment ON rent.rent.rent_agreement_no = rent.payment.rent_agreement_no;
+
+    PAY_NO DAMAGELABEL    
+---------- ---------------
+        36                
+        36                
+        36                
+        36                
+        36                
+        36                
+        36                
+        36                
+       126                
+       126                
+       126                
+
+    PAY_NO DAMAGELABEL    
+---------- ---------------
+       126                
+       126                
+           No Payment Made
+           No Payment Made
+       126                
+       134                
+       134                
+           No Payment Made
+       126                
+       134                
+       126                
+
+    PAY_NO DAMAGELABEL    
+---------- ---------------
+           No Payment Made
+       126                
+       134                
+           No Payment Made
+       134                
+       126                
+       134                
+           No Payment Made
+       126                
+       134                
+           No Payment Made
+
+    PAY_NO DAMAGELABEL    
+---------- ---------------
+       126                
+       134                
+           No Payment Made
+       126                
+       134                
+           No Payment Made
+       126                
+       134                
+           No Payment Made
+       134                
+           No Payment Made
+
+    PAY_NO DAMAGELABEL    
+---------- ---------------
+       134                
+       182                
+       182                
+           No Payment Made
+       134                
+       182                
+           No Payment Made
+           No Payment Made
+           No Payment Made
+       134                
+       182                
+
+    PAY_NO DAMAGELABEL    
+---------- ---------------
+           No Payment Made
+       182                
+           No Payment Made
+       182                
+           No Payment Made
+       182                
+
+61 rows selected. 
+
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> 
+SQL> --Comment out SET ECHO and SPOOL commands before submitting your portfolio
+SQL> SPOOL OFF
